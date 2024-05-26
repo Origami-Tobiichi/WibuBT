@@ -7,10 +7,10 @@ global.APIs = {
 
 // Apikey
 global.APIKeys = {
-	'https://api.zeeoneofc.my.id': 'Your Key',
+	'https://api.zeeoneofc.my.id': 'slu3FuuVUjnomHN',
 }
 
-global.namabot = "Bot Store"
+global.namabot = "Varzx stor"
 global.namaowner = "Zeeoneofc"
 global.packname = namabot
 global.author = namaowner
@@ -232,7 +232,7 @@ menu(pushname, salam, mundur, upload, download, totalGb, usedGb, freeGb, ownerNa
 ┆❐ ${prefix}generalexam
 ┆❐ ${prefix}glowingtext
 ┆❐ ${prefix}graffiti3d
-┆❐ ${prefix}graffititext
+┆❐ ${prefix}graffititeext
 ┆❐ ${prefix}graffititext2
 ┆❐ ${prefix}graffititext3
 ┆❐ ${prefix}greetingcardvideo
