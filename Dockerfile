@@ -1,9 +1,11 @@
-# Multi-stage build untuk size yang lebih kecil
+# Multi-stage build
 FROM node:lts-bullseye AS builder
 
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --only=production
+
+# Gunakan npm install jika package-lock.json tidak ada
+RUN if [ -f package-lock.json ]; then npm ci --omit=dev; else npm install --omit=dev; fi
 
 # Final stage
 FROM node:lts-bullseye-slim
@@ -23,10 +25,6 @@ WORKDIR /app
 COPY --from=builder /app/node_modules ./node_modules
 COPY . .
 
-EXPOSE 8000
-
-# Health check untuk platform cloud
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD node -e "require('http').get('http://localhost:3000/health', (r) => process.exit(r.statusCode === 200 ? 0 : 1))"
+EXPOSE 3000
 
 CMD ["npm", "start"]
